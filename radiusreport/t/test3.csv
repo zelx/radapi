@@ -1,0 +1,5 @@
+"Login Date","Seconds This","Seconds Total","BW In","BW Out","Reason"
+"2013-02-26 03:13:42 Tue",889,889,884261,67350,"Idle-Timeout"
+"2013-02-26 04:17:54 Tue",103,992,982140,76515,"User-Request"
+"2013-02-26 05:42:35 Tue",177,1169,599718,62753,"User-Request"
+"2013-02-26 05:51:29 Tue",110,1279,9944885,547344,"User-Request"

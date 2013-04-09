@@ -1,0 +1,5 @@
+"Login Date","Seconds This","Seconds Total","BW In","BW Out","Reason"
+"2013-03-13 05:26:16 Wed",22,22,266008,28667,"User-Request"
+"2013-03-13 06:33:39 Wed",7203,7225,67615159,2316994,"Session-Timeout"
+"2013-03-14 23:45:35 Thu",424,7649,8630,72076,"User-Request"
+"2013-03-14 23:53:03 Thu",6,7655,6226,35720,"User-Request"

@@ -1,0 +1,66 @@
+NOTE: Installation assumes apache, ssl, and php on a linux system.
+Other setups may work fine.  This also assumes linux skills and root
+access.  Afterall, let's face it, if your trying to set up a
+chillispot access point, you're going to need these anyway.
+
+
+
+1. untar the scripts wherever you want your secure webserver DocumentRoot.
+For example:
+
+$ mv gologin.x.xx.tgz /home/mysite.com/ssl/.
+$ cd /home/mysite.com/ssl
+$ tar xvzf gologin.x.xx.tgz
+$ ln -s   gologin.x.xx   gologin
+
+This will create:
+
+/home/mysite.com/ssl/gologin.x.xx
+/home/mysite.com/ssl/gologin.x.xx/go
+/home/mysite.com/ssl/gologin.x.xx/lib
+
+The symbolic link comes in handy when setting up apache.
+
+All files in the tarball extract within these directories.
+
+
+
+2. You should point your secure webserver's DocumentRoot to the
+site-doc directory.  Following the example above:
+
+<VirtualHost *:443>
+  ServerName go.mysite.com
+  DocumentRoot /home/mysite.com/ssl/gologin/go
+  ServerAdmin admin@mysite.com
+ 
+  SSLEngine on
+  SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+  SSLCertificateFile /etc/httpd/conf/ssl.crt/gologin.crt
+  SSLCertificateKeyFile /etc/httpd/conf/ssl.key/gologin.key
+  SSLCACertificateFile /usr/share/ssl/certs/ca-bundle.crt
+ 
+  <Files ~ "\.(php3|php?)$">
+    SSLOptions +StdEnvVars
+  </Files>
+ 
+  SetEnvIf User-Agent ".*MSIE.*" \
+         nokeepalive ssl-unclean-shutdown \
+         downgrade-1.0 force-response-1.0
+</VirtualHost>
+
+
+
+3. Edit ./gologin/lib/config.php to suit your setup.
+
+
+
+4. Modify or create a new gologin/go/wireless_logo.png.  A
+layered xcf file is included for gimp users!
+
+Also, modify ./gologin/go/styles.css to suit your tastes.
+Be sure to make it nice and ugly and specify really awful fonts that
+only windows users could possibly have (with defaults for sans-serif
+for the rest of us ;^b ).
+
+--
+Drew

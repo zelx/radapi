@@ -1,0 +1,8 @@
+This program was written by Andrew C. Bertola <drew@drewb.com>.
+It was rewritten by Michael Klein <michael dot klein at alquanto dot de>
+
+It is a re-implementation of hotspotlogin.php, which itself was
+derived from hotspotlogin.cgi.
+
+The authors of those programs may be found on
+http://www.chillispot.org/forum/ under the names 'Cedric' and 'kanne'.

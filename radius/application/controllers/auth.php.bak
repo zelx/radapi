@@ -1,0 +1,57 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Auth extends CI_Controller {
+	
+	public function index()
+	{
+		 if($this->session->userdata('member_id'))redirect(base_url()."index.php");
+	}
+
+	public function check()
+	{
+		 if($this->session->userdata('member_id')){
+				
+
+		 }else{
+			redirect(base_url()."index.php/auth/login");
+		 }
+		
+	}
+
+	public function login()
+	{	
+		 
+		 $data['message'] ="";
+
+		 if($this->session->userdata('member_id'))redirect(base_url()."index.php");
+
+
+
+		if($post=$this->input->post()){
+			extract($post);
+			$sql = "select * from member where user ='$user' and password='$password'";
+			$ret = $this->db->query($sql);
+			if($ret->num_rows()){
+				$data_ret=$ret->result();
+				$this->session->set_userdata('member_id',$data_ret[0]->member_id);
+				$this->session->set_userdata('first_name',$data_ret[0]->first_name);
+				$this->session->set_userdata('last_name',$data_ret[0]->last_name);
+				
+				redirect(base_url()."index.php");
+
+			}else{
+			  $data['message'] = "Wrong user name or password";
+			}
+		}
+
+		$this->load->view('login',$data);
+	}
+
+		
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url()."index.php/auth/login");
+	}
+		
+}
